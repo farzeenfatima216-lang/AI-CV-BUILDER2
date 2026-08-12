@@ -1,0 +1,114 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build frontend",
+			"type": "shell",
+			"command": "cd frontend && npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Start app",
+			"type": "shell",
+			"command": "python start_app.py",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Install backend dependencies",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -m pip install fastapi uvicorn \"python-jose[cryptography]\" \"passlib[bcrypt]\" sqlalchemy pydantic email-validator",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Start app",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe start_app.py",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Check server health",
+			"type": "shell",
+			"command": "powershell -Command \"Invoke-WebRequest http://127.0.0.1:8000/api | Select-Object -Expand Content\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify server health",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -c \"import urllib.request, json; print(urllib.request.urlopen('http://127.0.0.1:8000/api').read().decode())\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect FastAPI routes",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -c \"import backend.app.main as m; print([getattr(r, 'path', None) for r in m.app.routes])\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Restart app",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe start_app.py",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify health endpoint",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -c \"import urllib.request, json; print(urllib.request.urlopen('http://127.0.0.1:8000/api').read().decode())\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect running server process",
+			"type": "shell",
+			"command": "netstat -ano | findstr :8000",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Capture server output",
+			"type": "shell",
+			"command": "powershell -Command \"Get-CimInstance Win32_Process -Filter \\\"ProcessId = 21904\\\" | Select-Object -ExpandProperty CommandLine\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Inspect backend import",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -c \"import os, sys; os.chdir(r'C:\\Users\\pc\\Documents\\AI_Professional_cv builder'); import backend.app.main as m; print([route.path for route in m.app.routes]);\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Restart app",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe start_app.py",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Verify app root and API",
+			"type": "shell",
+			"command": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -c \"import urllib.request, json; print('API', urllib.request.urlopen('http://127.0.0.1:8000/api').read().decode()); print('ROOT', urllib.request.urlopen('http://127.0.0.1:8000/').read(100).decode('utf-8', 'ignore'))\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Restart unified app",
+			"type": "shell",
+			"command": "taskkill /F /PID 21904 >nul 2>&1 || exit 0 && C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python313\\python.exe start_app.py",
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
